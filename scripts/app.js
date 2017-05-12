@@ -1,5 +1,5 @@
 // 1.新建模块
-var time = angular.module('timeApp',['Controllers','ngRoute']);
+var time = angular.module('timeApp',['Controllers','ngRoute','Directive']);
 	//2.定义导航栏的打开或关闭方法
 	time.run(['$rootScope',function($rootScope){
 		// 初始化导航栏的状态
@@ -10,10 +10,10 @@ var time = angular.module('timeApp',['Controllers','ngRoute']);
 			$rootScope.collapsed = !$rootScope.collapsed;
 			//查找导航栏中的dd节点
 			var navss = document.querySelectorAll('.navs dd');
-			console.log(navss.length);
+			// console.log(navss.length);
 			// 遍历所有导航具体内容,将每一个内容往右移动  侧边栏
 			if($rootScope.collapsed){
-				console.log("open");
+				// console.log("open");
 				for(var i = 0;i<navss.length;i++){
 					// 水平垂直位移为0
 					navss[i].style.transform="translate(0)";
@@ -40,6 +40,7 @@ var time = angular.module('timeApp',['Controllers','ngRoute']);
 			// 	body.style.transform='translate(50%)';
 			// }
 		} 
+
 }])
 // 配置内容 解决http 乱码
 	time.config(function($locationProvider){
@@ -49,6 +50,9 @@ var time = angular.module('timeApp',['Controllers','ngRoute']);
 	//配置路由
 	time.config(['$routeProvider',function($routeProvider){
 		$routeProvider
-		.when('/today',{templateUrl:'./views/today.html'})
+		.when('/today',{
+			templateUrl:'./views/today.html',
+			controller:'TodayCtrl',
+		})
 	
 }])

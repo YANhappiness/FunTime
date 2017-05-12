@@ -20,3 +20,24 @@ angular.module('Controllers',[])
 	}
 }])
 
+//版本二  ：今日一刻的控制器 
+.controller('TodayCtrl',['$scope','$filter','$http',function($scope,$filter,$http){
+	var today = $filter('date')(new Date,'yyyy-MM-dd');
+	// 获取今日时间
+	// $scope.today = today;
+
+	$http({
+		url:'./API/today.php',
+		params:{today:today}
+	}).then(function successCallback(response){
+		// 请求成功执行代码
+		  	$scope.date = response.data.date;
+		  	$scope.posts =response.data.posts;
+		  	console.log($scope.text);
+		},function errorCallback(response){
+		// 请求失败执行代码
+			alert("请等待。。。");
+		});
+
+}])
+
