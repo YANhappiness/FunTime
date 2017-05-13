@@ -57,5 +57,11 @@ var time = angular.module('timeApp',['Controllers','ngRoute','Directive']);
 		}).when('/older',{    //往期内容
 			templateUrl:'./views/older.html',
 			controller:'olderCtrl',
+		}).when('/author',{    //热门作者
+			templateUrl:'./views/author.html',
+			controller:'authorCtrl',
+		}).when('/category',{    //栏目浏览
+			templateUrl:'./views/category.html',
+			controller:'categoryCtrl',
 		}).otherwise({redirectTo:'/today'});  //重定向
 }])

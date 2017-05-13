@@ -6,7 +6,7 @@ angular.module('Controllers',[])
 		{"path":"#/today","icon":"icon-home","text":"今日一刻"},
 		{"path":"#/older","icon":"icon-file-empty","text":"往期内容"},
 		{"path":"#/author","icon":"icon-pencil","text":"热门作者"},
-		{"path":"./views/category.html","icon":"icon-menu","text":"栏目浏览"},
+		{"path":"#/category","icon":"icon-menu","text":"栏目浏览"},
 		{"path":"./views/favourite.html","icon":"icon-heart","text":"我的喜欢"},
 		{"path":"./views/settings.html","icon":"icon-cog","text":"设置"},
 	];
@@ -65,13 +65,56 @@ angular.module('Controllers',[])
 		url:'./API/older.php',
 	}).then(function successCallback(response){
 		// 请求成功执行代码
-		  	$scope.date = response.data.result;
+		  	$scope.date = response.data.date;
 		  	$scope.posts =response.data.posts;
-		  	console.log(response.data);
+		  	// console.log(response.data);
 		// 隐藏加载图标
 			$rootScope.loaded = true;
 		},function errorCallback(response){
 		// 请求失败执行代码
 			alert("请等待。。。");
 		});
+}])
+
+
+	// 热门作者控制器
+.controller('authorCtrl',['$scope','$http','$rootScope',function($scope,$http,$rootScope){
+		//设置图标的显示状态
+		$rootScope.loaded = false;
+
+		//设置标题
+		$rootScope.title = "本周推荐";
+
+		//设置当前导航索引
+		$rootScope.index = 2;
+
+	$http({
+		url:'./API/author.php',
+	}).then(function successCallback(response){
+		// 请求成功执行代码
+		  	$scope.recommend = response.data.recommend;
+		  	$scope.author =response.data.author;
+		  	console.log(response.data.author);
+
+		  	// console.log(response.data.author);
+		// 隐藏加载图标
+			$rootScope.loaded = true;
+		},function errorCallback(response){
+		// 请求失败执行代码
+			alert("请等待。。。");
+		});
+}])
+
+
+
+	// 栏目浏览控制器
+.controller('categoryCtrl',['$scope','$http','$rootScope',function($scope,$http,$rootScope){
+		//设置图标的显示状态
+		$rootScope.loaded = true;
+
+		//设置标题
+		$rootScope.title = "栏目浏览";
+
+		//设置当前导航索引
+		$rootScope.index = 3;
 }])

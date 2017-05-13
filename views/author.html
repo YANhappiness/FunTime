@@ -1,42 +1,29 @@
 
-
-
-<!-- 头部 -->
-			<div class="header">
-				<a href="javascript:;" class="menu icon-menu"></a>
-				<h2>热门作者</h2>
-				<a href="javascript:;" class="search icon-search"></a>
-			</div>
-			<!-- 主体 -->
-			<div class="body">
-				<dl class="author">
-					<dt>本周推荐</dt>
-					<dd>
-						<div class="avatar">
-							<img src="../uploads/avatar_1.png" alt="">
-						</div>
-						<div class="info">
-							<h5>深焦</h5>
-							<p>我们在全世界和你看电影</p>
-						</div>
-					</dd>
-					<dt>热门作者</dt>
-					<dd>
-						<div class="avatar">
-							<img src="../uploads/avatar_3.png" alt="">
-						</div>
-						<div class="info">
-							<h5>风行水上</h5>
-							<p>本名高军，画家</p>
-						</div>
-					</dd>
-				</dl>
-			</div>
-
-
-
-
-
+<!-- 主体 -->
+<div class="body">
+    <dl class="author">
+        <dt>本周推荐</dt>
+        <dd ng-repeat="rec in recommend.authors">
+            <div class="avatar">
+                <img ng-src="{{rec.avatar}}" alt="">
+            </div>
+            <div class="info">
+                <h5>{{rec.name}}</h5>
+                <p>{{rec.editor_notes}}</p>
+            </div>
+        </dd>
+        <dt>热门作者</dt>
+        <dd ng-repeat="author in author.authors">
+            <div class="avatar">
+                <img ng-src="{{author.avatar}}" alt="">
+            </div>
+            <div class="info">
+                <h5>{{author.name}}</h5>
+                <p>{{author.editor_notes}}</p>
+            </div>
+        </dd>
+    </dl>
+</div>
 <!-- <!DOCTYPE html>
 <html lang="en">
 <head>
