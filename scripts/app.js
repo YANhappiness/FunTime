@@ -63,5 +63,11 @@ var time = angular.module('timeApp',['Controllers','ngRoute','Directive']);
 		}).when('/category',{    //栏目浏览
 			templateUrl:'./views/category.html',
 			controller:'categoryCtrl',
+		}).when('/favourite',{    //我的喜欢
+			templateUrl:'./views/favourite.html',
+			controller:'favouriteCtrl',
+		}).when('/settings',{    //设置
+			templateUrl:'./views/settings.html',
+			controller:'settingsCtrl',
 		}).otherwise({redirectTo:'/today'});  //重定向
 }])

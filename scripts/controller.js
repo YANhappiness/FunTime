@@ -7,13 +7,9 @@ angular.module('Controllers',[])
 		{"path":"#/older","icon":"icon-file-empty","text":"往期内容"},
 		{"path":"#/author","icon":"icon-pencil","text":"热门作者"},
 		{"path":"#/category","icon":"icon-menu","text":"栏目浏览"},
-		{"path":"./views/favourite.html","icon":"icon-heart","text":"我的喜欢"},
-		{"path":"./views/settings.html","icon":"icon-cog","text":"设置"},
+		{"path":"#/favourite","icon":"icon-heart","text":"我的喜欢"},
+		{"path":"#/settings","icon":"icon-cog","text":"设置"},
 	];
-	// 侧边栏点击状态
-	// $scope.changState = function(index){
-	// 	$scope.status = index;
-	// }
 }])
 
 //版本二  ：今日一刻的控制器 
@@ -108,7 +104,7 @@ angular.module('Controllers',[])
 
 
 	// 栏目浏览控制器
-.controller('categoryCtrl',['$scope','$http','$rootScope',function($scope,$http,$rootScope){
+.controller('categoryCtrl',['$scope','$rootScope',function($scope,$rootScope){
 		//设置图标的显示状态
 		$rootScope.loaded = true;
 
@@ -117,4 +113,29 @@ angular.module('Controllers',[])
 
 		//设置当前导航索引
 		$rootScope.index = 3;
+}])
+
+	// 我的喜欢控制器
+.controller('favouriteCtrl',['$rootScope',function($rootScope){
+		//设置图标的显示状态
+		$rootScope.loaded = true;
+
+		//设置标题
+		$rootScope.title = "我的喜欢";
+
+		//设置当前导航索引
+		$rootScope.index = 4;
+}])
+
+
+	// 设置控制器
+.controller('settingsCtrl',['$rootScope',function($rootScope){
+		//设置图标的显示状态
+		$rootScope.loaded = true;
+
+		//设置标题
+		$rootScope.title = "设置";
+
+		//设置当前导航索引
+		$rootScope.index = 5;
 }])
