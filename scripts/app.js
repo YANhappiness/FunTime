@@ -4,13 +4,21 @@ var time = angular.module('timeApp',['Controllers','ngRoute','Directive']);
 	time.run(['$rootScope',function($rootScope){
 		// 初始化导航栏的状态
 		$rootScope.collapsed = false;
+
+		//侧边栏当前索引
+		$rootScope.index = 0;
 		//定义toogle方法 点击事件
-		$rootScope.toggle = function(){
+		$rootScope.toggle = function(index){
 			//改变侧边导航栏的状态
 			$rootScope.collapsed = !$rootScope.collapsed;
 			//查找导航栏中的dd节点
 			var navss = document.querySelectorAll('.navs dd');
-			// console.log(navss.length);
+
+			// 设置当前导航状态
+			document.querySelector('.navs dd.active').classList.remove('active');
+
+			navss[$rootScope.index].classList.add('active');
+
 			// 遍历所有导航具体内容,将每一个内容往右移动  侧边栏
 			if($rootScope.collapsed){
 				// console.log("open");
@@ -32,13 +40,6 @@ var time = angular.module('timeApp',['Controllers','ngRoute','Directive']);
 					navss[i].style.transitionDuration=(navss.length-i)*0.15+'s';
 				}
 			}
-
-			// 将主题内容向右移
-			// var head = document.querySelector('.header');
-			// var body = document.querySelector('.body');
-			// if(true){
-			// 	body.style.transform='translate(50%)';
-			// }
 		} 
 
 }])
@@ -47,12 +48,14 @@ var time = angular.module('timeApp',['Controllers','ngRoute','Directive']);
 		$locationProvider.hashPrefix('');
 	});
 
-	//配置路由
+	//配置路由  
 	time.config(['$routeProvider',function($routeProvider){
 		$routeProvider
-		.when('/today',{
+		.when('/today',{      //今日一刻
 			templateUrl:'./views/today.html',
 			controller:'TodayCtrl',
-		})
-	
+		}).when('/older',{    //往期内容
+			templateUrl:'./views/older.html',
+			controller:'olderCtrl',
+		}).otherwise({redirectTo:'/today'});  //重定向
 }])

@@ -869,3 +869,10 @@ img {
 .body .settings li span {
   float: right;
 }
+
+/* loading pic */
+.loading{
+  width: 30%;
+  margin:2% auto;
+  border-radius:5%; 
+}

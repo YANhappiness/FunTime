@@ -1,9 +1,10 @@
-// 创建指令模块
+// 创建指令模块  loading图片
 angular.module("Directive",[])
-.driective('loading',function(){
+.directive('loading',function(){
+
 	return {
 		restrict:'A',
 		replace:true,
-		template:'<img src="" alt="">'
+		template:'<img src="" alt="">',
 	}
 })

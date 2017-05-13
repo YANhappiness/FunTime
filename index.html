@@ -6,78 +6,34 @@
 	<title>豆瓣一刻</title>
 	<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
 	<link rel="stylesheet" href="./public/less/main.css">
-</head>
-<body ng-app="timeApp" ng-controller="demo">
-	<div class="viewport">
-		<!-- 侧边导航 -->
-		<div ng-class="{navs:true,collapse:collapsed}" ng-controller="navCtrl">   <!-- class=collapse 点击移动-->
-			<dl>
-				<dt class="login">
-					<div class="avatar">
-						<img src="./public/images/avatar.png" alt="">
-					</div>
-					<span>登录</span>
-				</dt>
-				<dd ng-class="{active:'{{status}}'==key}" ng-repeat = "(key,nav) in navs" ng-click="changState($index)">
-					<a href="{{nav.path}}" class="{{nav.icon}}">
-						<span>{{nav.text}}</span>
-					</a>
-				</dd>
-<!-- 				<dd>
-	<a href="./views/older.html" class="icon-file-empty">
-		<span>往期内容</span>
-	</a>
-</dd>
-<dd>
-	<a href="./views/author.html" class="icon-pencil">
-		<span>热门作者</span>
-	</a>
-</dd>
-<dd>
-	<a href="./views/category.html" class="icon-menu">
-		<span>栏目浏览</span>
-	</a>
-</dd>
-<dd>
-	<a href="./views/favourite.html" class="icon-heart">
-		<span>我的喜欢</span>
-	</a>
-</dd>
-<dd>
-	<a href="./views/settings.html" class="icon-cog">
-		<span>设置</span>
-	</a>
-</dd> -->
-			</dl>
-			<div class="extra">
-				<a href="javascript:;" class="icon-image">夜晚</a>
-				<a href="javascript:;" class="icon-download">离线</a>
-			</div>
-		</div>
-		<div class="container">
-			<!-- 头部 -->
-			<div ng-class="{header:true,collapse:collapsed}">
-				<a href="javascript:;" class="menu icon-menu" ng-click="toggle()"></a>
-				<h2>今日一刻</h2>
-				<a href="javascript:;" class="search icon-search"></a>
-			</div>
-			<!-- 主体 -->
-			<div ng-class="{body:true,collapse:collapsed}">
-				<!-- <div class="loading">加载图片</div> -->
-				<div ng-view></div>
-			</div>
-		</div>
-	</div>
-
-	<!-- <script src="./public/libs/toggle.js"></script> -->
-
-	<!-- 引入angular -->
+		<!-- 引入angular -->
 	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 	<script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
 	<!-- 引入angular入口 -->
 	<script type="text/javascript" src="scripts/app.js"></script>
 	<script type="text/javascript" src="scripts/controller.js"></script>
-<!-- 	<script type="text/javascript" src="scripts/directives.js"></script>
-<script type="text/javascript" src="scripts/services.js"></script> -->
+	<script type="text/javascript" src="scripts/directives.js"></script>
+	<script type="text/javascript" src="scripts/services.js"></script>
+</head>
+<body ng-app="timeApp">
+	<div class="viewport">
+		<!-- 侧边栏导航 -->
+		<div ng-include="'./views/navs.html'" ng-controller="navCtrl"></div>
+
+		<div class="container">
+			<!-- 头部 -->
+			<div ng-class="{header:true,collapse:collapsed}">
+				<a href="javascript:;" class="menu icon-menu" ng-click="toggle()"></a>
+				<h2>{{title}}</h2>
+				<a href="javascript:;" class="search icon-search"></a>
+			</div>
+			<!-- 主体 -->
+			<div ng-class="{body:true,collapse:collapsed}">
+				<!-- loading.... -->
+				<div loading ng-if="!loaded" class="loading" ng-src="./public/images/loading.gif"></div>
+				<div ng-view></div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
