@@ -79,7 +79,7 @@ angular.module('Controllers',[])
 		$rootScope.loaded = false;
 
 		//设置标题
-		$rootScope.title = "本周推荐";
+		$rootScope.title = "热门作者";
 
 		//设置当前导航索引
 		$rootScope.index = 2;

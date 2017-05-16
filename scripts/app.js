@@ -19,6 +19,8 @@ var time = angular.module('timeApp',['Controllers','ngRoute','Directive']);
 
 			navss[$rootScope.index].classList.add('active');
 
+			// console.log(document.querySelector('.navs dd.active'));
+
 			// 遍历所有导航具体内容,将每一个内容往右移动  侧边栏
 			if($rootScope.collapsed){
 				// console.log("open");
